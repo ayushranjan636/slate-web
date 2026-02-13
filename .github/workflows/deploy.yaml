@@ -1,0 +1,66 @@
+name: Deploy Slatemate to AWS Fargate
+
+on:
+  push:
+    branches:
+      - main
+
+# Permissions required for the workflow to authenticate with AWS
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # --- NEW: Set up QEMU for multi-platform builds ---
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # --- NEW: Set up Docker Buildx ---
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::020408743919:role/githubActions
+          aws-region: ap-south-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: slatemate-app
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # --- MODIFIED: Added --platform flag to build for ARM64 ---
+          docker buildx build --platform linux/arm64 --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --output type=image,push=true .
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition slatemate-app --query taskDefinition > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: slatemate-app
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: slatemate-service
+          cluster: slatemate-cluster
