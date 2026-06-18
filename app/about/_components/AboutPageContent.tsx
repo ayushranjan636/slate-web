@@ -65,7 +65,7 @@ export default function AboutContent() {
                 <ScrollReveal delay={0.2} className="w-full max-w-lg lg:max-w-none mx-auto">
                   <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border/50 group w-full bg-black/5">
                     <Image
-                      src="/iit.jpg"
+                      src="/IIT.jpg"
                       alt="SlateMate at IIT Madras Research Park"
                       width={600}
                       height={800}
