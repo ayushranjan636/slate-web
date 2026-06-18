@@ -641,9 +641,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="pt-16">
+    <div>
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blueLight/15 via-background to-orangeLight/10">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-br from-blueLight/15 via-background to-orangeLight/10">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>

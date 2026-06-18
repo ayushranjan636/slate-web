@@ -1,9 +1,30 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /_next/
+Disallow: /login
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /login
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /login
 
 # Host
-Host: https://slatemate.in
+Host: https://www.slatemate.in
 
 # Sitemaps
-Sitemap: https://slatemate.in/sitemap.xml
+Sitemap: https://www.slatemate.in/sitemap.xml

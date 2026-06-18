@@ -20,6 +20,9 @@ yarn-error.log*
 # env files
 .env*
 
+# macOS
+.DS_Store
+
 # vercel
 .vercel
 
@@ -28,3 +31,5 @@ yarn-error.log*
 next-env.d.ts
 
 .tf*
+# Waitlist data
+waitlist-data.json

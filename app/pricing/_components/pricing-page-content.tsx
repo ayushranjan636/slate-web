@@ -5,7 +5,6 @@ import Link from "next/link"
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
-import Head from "next/head"
 
 export function PricingPageContent() {
   const [isYearly, setIsYearly] = useState(false)
@@ -103,51 +102,9 @@ export function PricingPageContent() {
   ]
 
   return (
-    <div className="pt-16">
-      {/* ✅ SEO Metadata */}
-      <Head>
-        <title>Pricing | SlateMate</title>
-        <meta
-          name="description"
-          content="Explore SlateMate's affordable pricing plans for students, families, and schools. Get started with AI-powered, personalized, and safe education today."
-        />
-        <meta
-          name="keywords"
-          content="SlateMate pricing, AI education platform, school software pricing, EdTech plans, parental control software, student safety, LMS integration, custom education software, education analytics"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="SlateMate Team" />
-        <meta name="language" content="English" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#1E2A38" />
-        <meta name="copyright" content="SlateMate" />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Pricing | SlateMate" />
-        <meta
-          property="og:description"
-          content="Choose a plan that suits your learning needs — from free tools to full school solutions. SlateMate offers flexible AI-powered pricing options."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.slatemate.in/pricing" />
-        <meta property="og:image" content="https://www.slatemate.in/og-image.jpg" />
-        <meta property="og:site_name" content="SlateMate" />
-        <meta property="og:locale" content="en_US" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Pricing | SlateMate" />
-        <meta
-          name="twitter:description"
-          content="Discover flexible, transparent pricing for SlateMate’s AI-powered education platform. Designed for students, families, and institutions."
-        />
-        <meta name="twitter:image" content="https://www.slatemate.in/og-image.jpg" />
-        <meta name="twitter:site" content="@slatemate_in" />
-        <meta name="twitter:creator" content="@slatemate_in" />
-      </Head>
-
+    <div>
       {/* Header */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blueLight/15 via-background to-orangeLight/10">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-br from-blueLight/15 via-background to-orangeLight/10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold mb-6">
@@ -166,6 +123,7 @@ export function PricingPageContent() {
               <button
                 onClick={() => setIsYearly(!isYearly)}
                 className={`relative w-16 h-8 rounded-full transition-colors ${isYearly ? 'bg-electric' : 'bg-muted-foreground/30'}`}
+                aria-label={`Switch to ${isYearly ? 'monthly' : 'yearly'} billing`}
               >
                 <span
                   className={`absolute top-1 left-1 w-6 h-6 bg-white rounded-full transition-transform ${isYearly ? 'translate-x-8' : 'translate-x-0'}`}
@@ -303,12 +261,12 @@ export function PricingPageContent() {
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Button variant="glow" size="lg" asChild>
-                  <Link href="https://chat.whatsapp.com/GPwdAcFrLhzFN69qIvPgV0?mode=wwt" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Link href="https://chat.whatsapp.com/GPwdAcFrLhzFN69qIvPgV0?mode=wwt" target="_blank" rel="noopener noreferrer">
                     Start Free Trial
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <Link href="https://wa.me/919025867204?text=Hi,%20I%27d%20like%20to%20schedule%20a%20demo%20for%20eRaksha" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                  <Link href="https://wa.me/919025867204?text=Hi,%20I%27d%20like%20to%20schedule%20a%20demo%20for%20eRaksha" target="_blank" rel="noopener noreferrer">
                     Schedule Demo
                   </Link>
                 </Button>

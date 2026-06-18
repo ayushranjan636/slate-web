@@ -64,9 +64,9 @@ export default function TermsOfService() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       
-      <div className="pt-16">
+      <div>
         {/* Hero Header */}
-        <section className="py-16 md:py-24 bg-gradient-to-br from-orangeLight/15 via-background to-blueLight/10">
+        <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-br from-orangeLight/15 via-background to-blueLight/10">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto text-center">
               <ScrollReveal>

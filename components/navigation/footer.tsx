@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 import { WaitlistForm } from "@/components/waitlist-form"
 
 
@@ -9,10 +9,17 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Brand + IITMIC Badge */}
           <div>
-            <h3 className="text-lg font-bold mb-4">SlateMate</h3>
+            <h3 className="text-lg font-bold mb-2">SlateMate</h3>
+            <div className="flex items-center gap-1.5 mb-4">
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-electric/15 border border-electric/30 text-[10px] font-semibold tracking-wide text-electric">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald" />
+                IITMIC Incubated
+              </span>
+            </div>
             <p className="text-primary-foreground/70 mb-4">
-              Building digital safety solutions.
+              Building AI-powered digital safety solutions for children and families.
             </p>
             <div className="flex space-x-3">
               <Button
@@ -81,6 +88,7 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -124,6 +132,7 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Resources */}
           <div>
             <h3 className="text-lg font-bold mb-4">Resources</h3>
             <ul className="space-y-2">
@@ -170,11 +179,12 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <Mail className="h-5 w-5 mr-2 text-electric mt-0.5" />
+                <Mail className="h-5 w-5 mr-2 text-electric mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:info@slatemate.in"
                   className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
@@ -183,7 +193,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start">
-                <Phone className="h-5 w-5 mr-2 text-electric mt-0.5" />
+                <Phone className="h-5 w-5 mr-2 text-electric mt-0.5 flex-shrink-0" />
                 <a
                   href="tel:+919025867204"
                   className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
@@ -192,26 +202,35 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start">
-                <div className="h-5 w-5 mr-2 text-electric mt-0.5 flex items-center justify-center">
-                  <span className="text-xs">📍</span>
-                </div>
+                <MapPin className="h-5 w-5 mr-2 text-electric mt-0.5 flex-shrink-0" />
                 <div className="text-primary-foreground/70 text-sm leading-relaxed">
-                  1st Floor, Nirmaan<br />
-                  Sudha & Shankar Innovation Hub<br />
-                  Indian Institute of Technology Madras<br />
-                  Chennai - 600036, India
+                  SLATEMATE PRIVATE LIMITED<br />
+                  C/o. IITM Research Park<br />
+                  1FA I Floor, Kanagam Road<br />
+                  TTTI Taramani, Chennai - 600113<br />
+                  Tamil Nadu, India
                 </div>
               </li>
-              <div className="mt-6 pt-6 border-t border-primary-foreground/10">
-                <h4 className="text-sm font-semibold mb-3">Subscribe to our newsletter</h4>
-                <WaitlistForm variant="dark" />
-              </div>
             </ul>
+
+            {/* Newsletter – moved outside <ul> to fix invalid HTML */}
+            <div className="mt-6 pt-6 border-t border-primary-foreground/10">
+              <h4 className="text-sm font-semibold mb-3">Subscribe to our newsletter</h4>
+              <WaitlistForm variant="dark" />
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} SlateMate. All rights reserved.</p>
+        <div className="border-t border-primary-foreground/10 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-primary-foreground/60 gap-4">
+          <div className="flex flex-col text-center md:text-left gap-1">
+            <p>&copy; {new Date().getFullYear()} SLATEMATE PRIVATE LIMITED. All rights reserved.</p>
+            <p>CIN: U62090TN2026PTC191373 | DPIIT Recognised Startup: DIPP261360</p>
+          </div>
+          <div className="flex items-center gap-1.5 font-medium px-4 py-1.5 rounded-full bg-primary-foreground/5 border border-primary-foreground/10">
+            <span className="text-orange-400">Mission</span> 
+            <span className="text-primary-foreground">Viksit Bharat 2047</span> 
+            <span className="text-green-500">🇮🇳</span>
+          </div>
         </div>
       </div>
     </footer>

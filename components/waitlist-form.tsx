@@ -13,29 +13,34 @@ export function WaitlistForm({ variant = "light", buttonText = "Join Now" }: Wai
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [errorMsg, setErrorMsg] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
 
     setIsSubmitting(true)
+    setErrorMsg("")
 
     try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbwMQtWuyj3zYV0C1rPccD1ta29ITK-ibcUwX7c0CeN67r9X9r0P7OtAGQivYnlPRk-t/exec",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-          body: new URLSearchParams({ email }),
-        },
-      )
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!res.ok) {
+        const errorData = await res.json()
+        throw new Error(errorData.error || "Something went wrong")
+      }
 
       setIsSuccess(true)
       setEmail("")
     } catch (error) {
       console.error("Error submitting email:", error)
+      setErrorMsg(
+        error instanceof Error ? error.message : "Failed to subscribe. Please try again."
+      )
     }
 
     setIsSubmitting(false)
@@ -69,6 +74,9 @@ export function WaitlistForm({ variant = "light", buttonText = "Join Now" }: Wai
           {isSubmitting ? "Joining..." : isSuccess ? "Joined!" : buttonText}
         </Button>
       </div>
+      {errorMsg && (
+        <p className="mt-2 text-sm text-destructive">{errorMsg}</p>
+      )}
     </form>
   )
 }
