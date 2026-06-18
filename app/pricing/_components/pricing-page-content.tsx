@@ -88,12 +88,12 @@ export function PricingPageContent() {
     {
       question: "How does per-child pricing work?",
       answer:
-        "Each plan is priced per child. The Standard plan includes up to 3 child profiles at ₹299/month, while Premium offers unlimited child profiles at ₹599/month per child.",
+        "Each plan covers one child. Basic is free forever, Standard is ₹299/month (₹2,990/year), and Premium is ₹599/month (₹5,990/year). Every plan includes one child profile with full access to that tier's features.",
     },
     {
       question: "Do you offer family discounts?",
       answer:
-        "Yes! For families with multiple children, our Premium plan offers the best value with unlimited child profiles and advanced family coaching features.",
+        "Each subscription covers one child. For families with multiple children, subscribe to a separate plan per child. Save with annual billing — pay for 10 months and get 12 months of protection on Standard and Premium plans.",
     },
     {
       question: "Is there a free trial available?",
