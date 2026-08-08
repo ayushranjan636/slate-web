@@ -22,12 +22,6 @@ export default function AboutContent() {
       image: "/prabhat.jpg",
     },
     {
-      name: "Ekta Chopra",
-      role: "COO",
-      bio: "VC Analyst Fellow with exposure to startup evaluation and market research. Strong in operations, workflow optimization, and product strategy.",
-      image: "/ekta.jpg",
-    },
-    {
       name: "Drushti Surkar",
       role: "CPO",
       bio: "Growth Marketer building AI workflows, automation systems, and applied ML models. Expert in product positioning and driving real-world user adoption.",

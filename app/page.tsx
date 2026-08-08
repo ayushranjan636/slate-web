@@ -172,8 +172,8 @@ export default function Home() {
               </div>
               
               <div className="mt-12">
-                <p className="text-sm font-semibold text-electric uppercase tracking-wider">Public Launch on 16th July</p>
-                <Countdown targetDate="2026-07-16T00:00:00" />
+                <p className="text-sm font-semibold text-electric uppercase tracking-wider">Public Launch on 5th September</p>
+                <Countdown targetDate="2026-09-05T00:00:00" />
               </div>
             </div>
           </ScrollReveal>
