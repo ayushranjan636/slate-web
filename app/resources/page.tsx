@@ -15,10 +15,38 @@ import {
   ArrowRight,
   CheckCircle2
 } from "lucide-react"
+import { Breadcrumbs } from "@/components/seo/json-ld"
 
 export const metadata: Metadata = {
-  title: "Digital Safety Frameworks & Resources | SlateMate",
-  description: "Explore globally-accepted digital safety frameworks including 4 C's, 5 P's, 4 R's, and more. Evidence-based resources for families, educators, and communities.",
+  title: "Digital Safety Frameworks & Resources",
+  description:
+    "Digital safety frameworks explained: the 4 C's, 5 P's, 4 R's and more. Evidence-based online safety resources for Indian parents, schools and educators.",
+  openGraph: {
+    title: "Digital Safety Frameworks & Resources | SlateMate",
+    description: "Globally-accepted digital safety frameworks (4 C's, 5 P's, 4 R's) explained for families, educators and communities.",
+    type: "website",
+    url: "https://www.slatemate.in/resources",
+    siteName: "SlateMate",
+    locale: "en_IN",
+    images: [
+      {
+        url: "https://www.slatemate.in/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Digital Safety Frameworks & Resources",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital Safety Frameworks & Resources | SlateMate",
+    description: "Globally-accepted digital safety frameworks explained for families and educators.",
+    images: ["https://www.slatemate.in/og-image.jpg"],
+    site: "@slatemate_",
+  },
+  alternates: {
+    canonical: "/resources",
+  },
 }
 
 const frameworks = [
@@ -187,6 +215,8 @@ const frameworks = [
 
 export default function ResourcesPage() {
   return (
+    <>
+      <Breadcrumbs items={[{ name: "Resources", path: "/resources" }]} />
     <div className="min-h-screen">
       {/* Frameworks Overview Table */}
       <section className="relative pt-32 pb-20 px-4">
@@ -593,5 +623,6 @@ export default function ResourcesPage() {
         </div>
       </section>
     </div>
+    </>
   )
 }

@@ -1,53 +1,43 @@
 import { NextResponse } from "next/server";
 import { submitToGoogleSheet } from "@/lib/google-sheets";
 import { getISTTimestamp } from "@/lib/utils";
+import { cleanText, getClientIp, isValidEmail, isValidPhone, rateLimit } from "@/lib/api-guard";
 
 export async function POST(req: Request) {
+  if (!rateLimit(`waitlist:${getClientIp(req)}`, 5, 60 * 60 * 1000)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await req.json();
-    const { name, email, phone, city } = body;
+    const name = cleanText(body?.name);
+    const city = cleanText(body?.city);
+    const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
+    const phone = typeof body?.phone === "string" ? body.phone.trim() : "";
 
     if (!name || !email || !phone || !city) {
-      return NextResponse.json(
-        { error: "All fields are required." },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "All fields are required." }, { status: 400 });
+    }
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
+    }
+    if (!isValidPhone(phone)) {
+      return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
     }
 
     const timestamp = getISTTimestamp();
-    const entry = { name, email, phone, city, timestamp };
 
-    console.log("[Waitlist] New signup:", JSON.stringify(entry));
-
-    try {
-      await submitToGoogleSheet({
-        sheet: "waitlist",
-        ...entry,
-      });
-    } catch (sheetError) {
-      console.error("[Waitlist] Google Sheets error:", sheetError);
-
-      const fs = await import("fs/promises");
-      const path = await import("path");
-      const filePath = path.join(process.cwd(), "waitlist-data.json");
-
-      let existing: typeof entry[] = [];
-      try {
-        const data = await fs.readFile(filePath, "utf-8");
-        existing = JSON.parse(data);
-      } catch {
-        // File doesn't exist yet, start fresh
-      }
-
-      existing.push(entry);
-      await fs.writeFile(filePath, JSON.stringify(existing, null, 2));
-    }
+    await submitToGoogleSheet({ sheet: "waitlist", name, email, phone, city, timestamp });
 
     return NextResponse.json({ success: true, message: "Successfully joined the waitlist!" });
   } catch (error) {
+    // Don't pretend success: surface the failure so the lead isn't silently lost.
     console.error("[Waitlist] Error:", error);
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: "We couldn't save your details right now. Please try again in a moment." },
       { status: 500 }
     );
   }

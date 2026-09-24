@@ -4,10 +4,13 @@ import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { WaitlistModal } from "@/components/modals/waitlist-modal"
 import { Button } from "@/components/ui/button"
 import { Shield, Brain, ArrowRight } from "lucide-react"
+import { Breadcrumbs, JsonLd } from "@/components/seo/json-ld"
+import { BRAND, ORG_ID, SITE_URL } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "eRaksha – AI Child Safety & Parental Control Software",
-  description: "eRaksha is the AI-powered child safety platform combining DNS filtering with an intelligent companion. Protects kids from harmful content, cyberbullying, and builds positive digital habits. IITMIC incubated.",
+  title: "eRaksha – AI Child Safety & Parental Control App",
+  description:
+    "eRaksha combines DNS filtering with a caring AI companion to protect kids from harmful content and cyberbullying and build healthy digital habits.",
   keywords: [
     "eRaksha",
     "child safety software",
@@ -42,12 +45,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "eRaksha – AI Child Safety & Parental Control Software",
     description: "AI-powered child safety with DNS filtering, AI companion, and family digital wellness.",
-    creator: "@slatemate_in",
-    site: "@slatemate_in",
+    creator: "@slatemate_",
+    site: "@slatemate_",
     images: ["https://www.slatemate.in/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://www.slatemate.in/product",
+    canonical: "/product",
   },
   robots: {
     index: true,
@@ -55,123 +58,132 @@ export const metadata: Metadata = {
   },
 }
 
-// Clean structured data
+// Visible on the page AND used for FAQPage schema (Google requires both to match).
+const productFaqs = [
+  {
+    q: "What is eRaksha and how does it protect children online?",
+    a: "eRaksha is an AI-powered child safety app from India. It combines DNS filtering, which blocks pornography, scams, violence and malware before they load, with an AI companion that explains in kid-friendly language why something was blocked and offers emotional support.",
+  },
+  {
+    q: "How is eRaksha different from other parental control apps?",
+    a: "Traditional parental controls only block. eRaksha also guides: its AI companion explains decisions, supports children emotionally and nudges them toward healthier habits, while parents get Safety, Focus and Emotional Balance scores instead of invasive message logs.",
+  },
+  {
+    q: "Does eRaksha read my child's private messages?",
+    a: "No. eRaksha never reads or records private messages, camera feeds or calls. It works on web domains, app categories and usage patterns only, and all data is stored on servers in India in line with the DPDP Act 2023.",
+  },
+  {
+    q: "How much does eRaksha cost?",
+    a: "eRaksha has a Free plan that is free forever and a Premium plan at ₹349 per month per child, which adds advanced DNS protection, the full AI companion, emotion-based alerts and the parent dashboard.",
+  },
+  {
+    q: "When does eRaksha launch?",
+    a: "eRaksha officially launches on 14th November 2026. Families can join the waitlist today for early access.",
+  },
+]
+
 const structuredData = {
-  "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "SoftwareApplication",
-      "@id": "https://www.slatemate.in/product#software",
-      "name": "eRaksha",
-      "description": "AI-powered child safety and parental control platform with DNS filtering, AI companion, and family digital wellness tools.",
-      "url": "https://www.slatemate.in/product",
-      "applicationCategory": "ParentalControlSoftware",
-      "operatingSystem": ["Windows", "macOS", "iOS", "Android"],
-      "offers": [
+      "@id": `${SITE_URL}/product#software`,
+      name: "eRaksha",
+      description:
+        "AI-powered child safety and parental control app combining DNS filtering, an AI companion for children and a parent dashboard.",
+      url: `${SITE_URL}/product`,
+      image: `${SITE_URL}/og-image.jpg`,
+      applicationCategory: "LifestyleApplication",
+      applicationSubCategory: "Parental control",
+      operatingSystem: "Android",
+      inLanguage: "en-IN",
+      countriesSupported: "IN",
+      releaseNotes: `Official launch on ${BRAND.launchDateLabel}`,
+      datePublished: BRAND.launchDate,
+      offers: [
         {
           "@type": "Offer",
-          "name": "Free Trial",
-          "price": "0",
-          "priceCurrency": "INR",
-          "availability": "https://schema.org/InStock",
-          "url": "https://www.slatemate.in/pricing",
+          name: "Free Plan",
+          price: "0",
+          priceCurrency: "INR",
+          availability: "https://schema.org/PreOrder",
+          availabilityStarts: BRAND.launchDate,
+          url: `${SITE_URL}/pricing`,
         },
         {
           "@type": "Offer",
-          "name": "Standard Plan",
-          "price": "299",
-          "priceCurrency": "INR",
-          "availability": "https://schema.org/InStock",
-          "priceSpecification": {
+          name: "Premium Plan",
+          price: String(BRAND.pricing.premiumMonthly),
+          priceCurrency: "INR",
+          availability: "https://schema.org/PreOrder",
+          availabilityStarts: BRAND.launchDate,
+          url: `${SITE_URL}/pricing`,
+          priceSpecification: {
             "@type": "UnitPriceSpecification",
-            "price": "299",
-            "priceCurrency": "INR",
-            "unitText": "per month"
-          }
-        }
+            price: String(BRAND.pricing.premiumMonthly),
+            priceCurrency: "INR",
+            unitText: "per month per child",
+            billingDuration: "P1M",
+          },
+        },
       ],
-      "featureList": [
-        "AI-Powered Child Companion",
-        "DNS Content Filtering",
-        "Real-time Parent Dashboard",
-        "Screen Time Management",
-        "Emotional Support & Habit Building",
-        "Cross-Platform Protection",
+      featureList: [
+        "DNS content filtering",
+        "AI companion for children",
+        "Parent dashboard with Safety, Focus and Emotional Balance scores",
+        "Screen time and habit building",
+        "Privacy-first: no ads, no data selling, data stored in India",
       ],
-      "author": {
-        "@type": "Organization",
-        "@id": "https://www.slatemate.in#organization"
-      },
-      "isFamilyFriendly": true,
-      "isAccessibleForFree": true,
+      publisher: { "@id": ORG_ID },
+      isFamilyFriendly: true,
+      isAccessibleForFree: true,
     },
     {
       "@type": "FAQPage",
-      "@id": "https://www.slatemate.in/product#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is eRaksha and how does it protect children online?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "eRaksha is an AI-powered child safety platform that combines advanced DNS filtering with an intelligent companion to protect, guide, and educate children online. It blocks harmful content, prevents cyberbullying, and provides emotional support through age-appropriate explanations."
-          }
-        },
-        {
-          "@type": "Question", 
-          "name": "How is eRaksha different from other parental control software?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Unlike traditional parental controls that just block content, eRaksha includes an AI companion that explains why content was blocked in kid-friendly terms, provides emotional support, and helps build positive digital habits through educational interactions."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What devices and platforms does eRaksha support?",
-          "acceptedAnswer": {
-            "@type": "Answer", 
-            "text": "eRaksha works across all major platforms including Windows, macOS, iOS, Android, and can be configured at the router level for whole-home protection."
-          }
-        }
-      ]
-    }
-  ]
+      "@id": `${SITE_URL}/product#faq`,
+      mainEntity: productFaqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
 }
 
 export default function ProductPage() {
   return (
     <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <Breadcrumbs items={[{ name: "Product", path: "/product" }]} />
+      <JsonLd data={structuredData} />
       
       <div>
         {/* Hero Section */}
         <section className="pt-32 pb-24 md:pt-40 md:pb-32 bg-gradient-to-br from-blueLight/15 via-background to-orangeLight/10">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto text-center">
-              <ScrollReveal>
-                <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                  <span className="bg-gradient-to-r from-electric to-emerald bg-clip-text text-transparent">
-                    eRaksha
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-foreground/80 mb-8">
-                  AI-powered digital companion that protects, guides, and inspires children online
-                </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <WaitlistModal>
-                    <Button variant="glow" size="lg" className="cursor-pointer">
-                      Join Waitlist
-                    </Button>
-                  </WaitlistModal>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link href="https://wa.me/919025867204?text=Hi,%20I%27d%20like%20to%20schedule%20a%20demo%20for%20eRaksha" target="_blank" rel="noopener noreferrer">Schedule Demo</Link>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                <span className="bg-gradient-to-r from-electric to-emerald bg-clip-text text-transparent">
+                  eRaksha
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl text-foreground/80 mb-4">
+                AI-powered digital companion that protects, guides, and inspires children online
+              </p>
+              <p className="text-base md:text-lg text-foreground/70 mb-8 max-w-2xl mx-auto">
+                eRaksha is an AI-powered child safety app from India that combines DNS filtering with a caring AI
+                companion and a parent dashboard. It blocks harmful content, explains why in kid-friendly language,
+                and helps children build healthier digital habits. Free forever, or Premium at ₹349/month per child —
+                launching {BRAND.launchDateLabel}.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <WaitlistModal>
+                  <Button variant="glow" size="lg" className="cursor-pointer">
+                    Join Waitlist
                   </Button>
-                </div>
-              </ScrollReveal>
+                </WaitlistModal>
+                <Button variant="outline" size="lg" asChild>
+                  <Link href="https://wa.me/919025867204?text=Hi,%20I%27d%20like%20to%20schedule%20a%20demo%20for%20eRaksha" target="_blank" rel="noopener noreferrer">Schedule Demo</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -187,16 +199,16 @@ export default function ProductPage() {
                 </p>
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="text-center bg-card p-8 rounded-xl border border-border/30 hover:shadow-[0_0_30px_rgba(249,189,96,0.3)] transition-all duration-500">
-                    <div className="text-3xl font-bold text-destructive mb-2">60%</div>
-                    <p className="text-sm text-foreground/70">Harmful content exposure</p>
+                    <div className="text-3xl font-bold text-destructive mb-2">67%</div>
+                    <p className="text-sm text-foreground/70">encounter harmful content (McAfee India, 2023)</p>
                   </div>
                   <div className="text-center bg-card p-8 rounded-xl border border-border/30 hover:shadow-[0_0_30px_rgba(115,158,254,0.3)] transition-all duration-500">
-                    <div className="text-3xl font-bold text-destructive mb-2">32%</div>
-                    <p className="text-sm text-foreground/70">Rising cyber crimes</p>
+                    <div className="text-3xl font-bold text-destructive mb-2">1 in 3</div>
+                    <p className="text-sm text-foreground/70">face cyberbullying or online threats (CRY India, 2023)</p>
                   </div>
                   <div className="text-center bg-card p-8 rounded-xl border border-border/30 hover:shadow-[0_0_30px_rgba(249,189,96,0.3)] transition-all duration-500">
-                    <div className="text-3xl font-bold text-destructive mb-2">85%</div>
-                    <p className="text-sm text-foreground/70">Parents feel helpless</p>
+                    <div className="text-3xl font-bold text-destructive mb-2">84%</div>
+                    <p className="text-sm text-foreground/70">of parents feel helpless (eRaksha Parent Survey, 2025)</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -344,6 +356,23 @@ export default function ProductPage() {
                 </p>
               </div>
             </ScrollReveal>
+          </div>
+        </section>
+
+        {/* FAQ – question-style headings with answer-first copy (quoted by AI search) */}
+        <section className="py-20 bg-muted/30" aria-labelledby="product-faq">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 id="product-faq" className="text-3xl font-bold mb-10 text-center">eRaksha: Common Questions</h2>
+              <div className="space-y-6">
+                {productFaqs.map((f) => (
+                  <div key={f.q} className="bg-card rounded-xl p-6 border border-border/40">
+                    <h3 className="text-lg font-semibold mb-2">{f.q}</h3>
+                    <p className="text-foreground/80 leading-relaxed">{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 

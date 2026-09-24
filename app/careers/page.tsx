@@ -2,22 +2,28 @@ import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Briefcase, Heart, Rocket, Users, Globe, TrendingUp, Code, Palette, BookOpen, Search, Megaphone, Mail, Sparkles, Target } from "lucide-react"
+import { Breadcrumbs } from "@/components/seo/json-ld"
 
 export const metadata: Metadata = {
-  title: "Careers at SlateMate | Join eRaksha Team - Shape Child Safety Innovation",
+  title: "Careers – Join the eRaksha Team",
   description:
-    "Join SlateMate's mission to build AI-powered digital safety for children. Open positions for AI engineers, developers, content creators, and more. Remote-first, meaningful work, competitive compensation.",
-  keywords:
-    "SlateMate careers India 2024, eRaksha team jobs, IIT Madras startup careers, child safety platform jobs Chennai, AI child protection careers, digital safety engineer jobs, child psychology technology careers, EdTech startup hiring India, AI engineer jobs Chennai, child safety innovation careers, digital wellness platform jobs, family technology careers India, child protection software developer jobs, AI companion developer careers, DNS protection engineer jobs, child cybersecurity careers India, digital parenting technology jobs, family safety platform careers, child development technology jobs, AI child mentor developer careers, digital citizenship education jobs, child online safety expert careers, family digital health careers, child behavior analysis careers, digital child psychology jobs, AI emotional intelligence developer, child safety research careers, family cybersecurity jobs India, digital wellness educator careers, child internet safety specialist jobs, parental control developer careers, child data privacy careers, digital child protection advocate jobs, AI family technology careers, child safety compliance careers, digital mindfulness technology jobs, child screen time researcher careers, family communication platform jobs, child online behavior analyst careers, digital child development careers, AI child guidance counselor jobs, child safety product manager careers, digital family wellness careers, child protection policy careers India",
+    "Join SlateMate at IIT Madras Research Park to build AI-powered child safety. Open roles for AI engineers, developers, designers and content creators.",
+  keywords: [
+    "SlateMate careers",
+    "eRaksha jobs",
+    "IIT Madras startup jobs",
+    "child safety startup Chennai",
+    "AI engineer jobs Chennai",
+  ],
   openGraph: {
-    title: "Careers | SlateMate - Join Our AI-Powered Learning Team",
+    title: "Careers at SlateMate – Build Safer Childhoods Online",
     description:
-      "Join SlateMate's team and help shape the future of AI-powered education. Explore current job openings and opportunities.",
+      "Help build eRaksha, India's AI-powered child digital safety platform. Explore open roles at SlateMate.",
     type: "website",
-    url: "https://slatemate.in/careers",
+    url: "https://www.slatemate.in/careers",
     images: [
       {
-        url: "https://slatemate.in/og-image.jpg",
+        url: "https://www.slatemate.in/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "SlateMate Careers",
@@ -26,43 +32,14 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Careers | SlateMate - Join Our AI-Powered Learning Team",
+    title: "Careers at SlateMate – Build Safer Childhoods Online",
     description:
-      "Join SlateMate's team and help shape the future of AI-powered education.",
-    images: ["https://slatemate.in/og-image.jpg"],
-    site: "@slatemate_in",
+      "Help build eRaksha, India's AI-powered child digital safety platform.",
+    images: ["https://www.slatemate.in/og-image.jpg"],
+    site: "@slatemate_",
   },
   alternates: {
-    canonical: "https://slatemate.in/careers",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  metadataBase: new URL("https://slatemate.in"),
-  creator: "SlateMate Team",
-  publisher: "SlateMate",
-  category: "careers",
-  other: {
-    // LLM Optimization for Careers Page
-    "ai-content-type": "careers-hiring-page",
-    "ai-primary-entities": "SlateMate-careers,eRaksha-team-jobs,IIT-Madras-startup-hiring,child-safety-careers",
-    "ai-content-topics": "job opportunities, career growth, child safety innovation, AI technology careers, startup culture",
-    "ai-extraction-hints": "company: SlateMate; location: Chennai, IIT Madras; industry: child safety AI; positions: engineering, psychology, design",
-    "llm-context-type": "job-listings-recruitment",
-    "llm-primary-intent": "attract top talent, showcase company culture, promote job openings",
-    "llm-key-messages": "innovative startup environment, meaningful child safety work, IIT Madras connection, growth opportunities",
-    "semantic-entities": "organization:SlateMate, location:Chennai-IIT-Madras, concept:careers, industry:child-safety-AI",
-    "relationship-mapping": "SlateMate:offers:career-opportunities, candidates:join:eRaksha-team, IIT-Madras:incubates:SlateMate",
-    "content-structure": "company-overview, open-positions, benefits-perks, application-process, culture-values",
-    "stakeholder-relevance": "job-seekers:career-opportunities, professionals:growth-potential, students:internship-opportunities",
-    "job-categories": "AI Engineering, Child Psychology, Digital Safety, Product Development, Research",
-    "company-stage": "Pre-Series A Startup",
-    "geo.region": "IN-TN",
-    "geo.placename": "Chennai, Tamil Nadu, India",
-    "audience": "Engineers, Designers, Researchers, Child Psychology Experts, AI Professionals",
-    "page-topic": "SlateMate Career Opportunities and Team Recruitment",
-    "hiring-focus": "Child Safety Innovation and AI Technology"
+    canonical: "/careers",
   },
 }
 
@@ -181,6 +158,7 @@ export default function Careers() {
 
   return (
     <>
+      <Breadcrumbs items={[{ name: "Careers", path: "/careers" }]} />
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"

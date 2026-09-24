@@ -1,65 +1,45 @@
 import { Metadata } from "next"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { HelpCircle, Shield, Smartphone, Lock, CreditCard, Settings, School, Wrench, Building2, Target, Mail, Sparkles } from "lucide-react"
+import { Breadcrumbs } from "@/components/seo/json-ld"
 
 export const metadata: Metadata = {
-  title: "FAQ | SlateMate eRaksha - Child Safety Questions & Answers",
+  title: "FAQ – eRaksha Child Safety Questions & Answers",
   description:
-    "Complete FAQ for eRaksha child safety platform. Get answers about AI companion features, DNS protection, pricing, privacy, installation, and family digital safety.",
-  keywords:
-    "eRaksha FAQ India 2024, child safety platform questions, AI digital protection answers, family internet safety FAQ, parental control questions India, DNS protection children FAQ, digital wellness platform support, child online safety answers, AI companion questions, family cybersecurity FAQ, screen time management questions, digital parenting support India, child privacy protection FAQ, online safety education answers, family digital health questions, child internet monitoring FAQ, digital habits guidance questions, AI child psychology support FAQ, cyber safety children answers, digital citizenship education FAQ, child screen addiction help questions, family technology balance FAQ, child emotional AI support answers, digital detox family questions, safe internet browsing FAQ, child development platform questions, digital mindfulness children FAQ, family communication platform support, child online behavior FAQ, AI safety mentor questions, digital guardian platform FAQ, child data privacy questions India, family digital literacy support, safe social media children FAQ, educational technology safety questions, child cyberbullying prevention FAQ, digital child protection answers, AI powered parenting FAQ, family internet filter questions, child online identity protection FAQ, digital wellness dashboard support, AI child guidance platform FAQ",
+    "Answers about eRaksha: how the AI companion and DNS protection work, privacy, setup, pricing (Free or ₹349/month per child) and the 14 Nov 2026 launch.",
+  keywords: [
+    "eRaksha FAQ",
+    "child safety app questions",
+    "parental control FAQ India",
+    "eRaksha pricing",
+    "DNS protection for children",
+    "AI companion for kids",
+  ],
   openGraph: {
-    title: "Frequently Asked Questions | SlateMate - AI-Powered Learning Platform",
+    title: "eRaksha FAQ – Child Safety Questions & Answers",
     description:
-      "Find answers to common questions about SlateMate's AI-powered learning platform. Learn about features, pricing, and safety measures.",
+      "Everything parents ask about eRaksha: safety features, privacy, pricing and setup.",
     type: "website",
-    url: "https://slatemate.in/faq",
+    url: "https://www.slatemate.in/faq",
     images: [
       {
-        url: "https://slatemate.in/og-image.jpg",
+        url: "https://www.slatemate.in/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SlateMate FAQ",
+        alt: "eRaksha FAQ",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Frequently Asked Questions | SlateMate - AI-Powered Learning Platform",
+    title: "eRaksha FAQ – Child Safety Questions & Answers",
     description:
-      "Find answers to common questions about SlateMate's AI-powered learning platform, including safety, pricing, and features.",
-    images: ["https://slatemate.in/og-image.jpg"],
-    site: "@slatemate_in",
+      "Everything parents ask about eRaksha: safety features, privacy, pricing and setup.",
+    images: ["https://www.slatemate.in/og-image.jpg"],
+    site: "@slatemate_",
   },
   alternates: {
-    canonical: "https://slatemate.in/faq",
-  },
-  metadataBase: new URL("https://slatemate.in"),
-  robots: {
-    index: true,
-    follow: true,
-  },
-  creator: "SlateMate Team",
-  publisher: "SlateMate",
-  category: "education",
-  other: {
-    // LLM Optimization for FAQ Page
-    "ai-content-type": "faq-support-page",
-    "ai-primary-entities": "eRaksha-FAQ,child-safety-questions,AI-companion-answers,support-documentation",
-    "ai-content-topics": "frequently asked questions, child safety support, AI companion guidance, technical help, platform assistance",
-    "ai-extraction-hints": "content: Q&A format; purpose: user support; topics: child safety, AI features, pricing, technical issues",
-    "llm-context-type": "question-answer-database",
-    "llm-primary-intent": "provide comprehensive answers to user questions, reduce support burden",
-    "llm-key-messages": "comprehensive support, expert answers, user-friendly guidance, technical assistance available",
-    "semantic-entities": "document:FAQ, concept:questions-answers, product:eRaksha, support:customer-service",
-    "relationship-mapping": "users:ask:questions, FAQ:provides:answers, support:helps:users, eRaksha:addresses:concerns",
-    "content-structure": "question-categories, detailed-answers, technical-explanations, troubleshooting-guides",
-    "stakeholder-relevance": "users:problem-solving, parents:safety-concerns, technical-users:implementation-details",
-    "question-categories": "Safety Features, Pricing, Technical Setup, Privacy, AI Companion, Family Use",
-    "geo.region": "IN",
-    "audience": "Parents, Families, Technical Users, Potential Customers",
-    "page-topic": "eRaksha Frequently Asked Questions and Support",
-    "support-level": "Comprehensive FAQ Database"
+    canonical: "/faq",
   },
 }
 
@@ -81,7 +61,7 @@ export default function FAQ() {
         "name": "Is eRaksha free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The basic version is completely free. The Premium Plan (₹299/month per child) unlocks advanced AI insights, weekly reports, emotion-based alerts, and deeper parental analytics."
+          "text": "Yes. The basic version is completely free. The Premium Plan (₹349/month per child) unlocks advanced AI insights, weekly reports, emotion-based alerts, and deeper parental analytics."
         }
       },
       {
@@ -115,6 +95,7 @@ export default function FAQ() {
 
   return (
     <>
+      <Breadcrumbs items={[{ name: "FAQ", path: "/faq" }]} />
       {/* Structured Data JSON-LD */}
       <script
         type="application/ld+json"
@@ -256,7 +237,7 @@ export default function FAQ() {
               
               <FAQItem
                 question="11. What is included in the Premium Plan?"
-                answer="The Premium Plan (₹299 / month per child) unlocks advanced AI insights, weekly reports, emotion-based alerts, and deeper parental analytics."
+                answer="The Premium Plan (₹349/month per child) unlocks advanced AI insights, weekly reports, emotion-based alerts, and deeper parental analytics."
               />
               
               <FAQItem
@@ -401,7 +382,7 @@ export default function FAQ() {
               
               <FAQItem
                 question="24. Is SlateMate a registered company?"
-                answer="SlateMate operates as a technology initiative currently under incorporation. We adhere to all Indian legal frameworks and Google Play requirements for family-oriented apps."
+                answer="Yes. SLATEMATE PRIVATE LIMITED is a registered Indian company (CIN: U62090TN2026PTC191373), a DPIIT-recognised startup (DIPP261360) incubated at IIT Madras Incubation Cell. We adhere to all Indian legal frameworks and Google Play requirements for family-oriented apps."
               />
               
               <FAQItem

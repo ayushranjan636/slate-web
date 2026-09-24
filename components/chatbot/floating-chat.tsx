@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { useChat } from "@ai-sdk/react"
+import { DefaultChatTransport } from "ai"
 import { MessageSquare, X, Send, Loader2, Bot } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -35,7 +36,7 @@ export function FloatingChat() {
   const [mounted, setMounted] = useState(false)
   const [chatInput, setChatInput] = useState("")
   
-  const chat = useChat({ api: "/api/chat" })
+  const chat = useChat({ transport: new DefaultChatTransport({ api: "/api/chat" }) })
   const { messages, error, sendMessage, status } = chat
   const isLoading = status === "submitted" || status === "streaming"
   
@@ -66,11 +67,12 @@ export function FloatingChat() {
   return (
     <>
       {/* Floating Action Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50">
         {!isOpen && (
           <Button
             onClick={() => setIsOpen(true)}
             size="icon"
+            aria-label="Open eRaksha support chat"
             className="h-14 w-14 rounded-full shadow-2xl bg-gradient-to-r from-bluePrimary to-electric hover:opacity-90 hover:scale-105 transition-all duration-300"
           >
             <MessageSquare className="h-6 w-6 text-white" />

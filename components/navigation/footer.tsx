@@ -176,6 +176,22 @@ export function Footer() {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/research/parent-survey-2025"
+                  className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
+                  Parent Survey 2025
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/compare/eraksha-vs-google-family-link"
+                  className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
+                  eRaksha vs Family Link
+                </Link>
+              </li>
             </ul>
           </div>
 

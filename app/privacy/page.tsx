@@ -1,16 +1,18 @@
 import { Metadata } from "next"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { Shield, Lock, Eye, Users, FileText, Globe, AlertCircle, Mail } from "lucide-react"
+import { Breadcrumbs } from "@/components/seo/json-ld"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | SlateMate eRaksha - Child Safety & Data Protection",
-  description: "Comprehensive privacy policy for SlateMate eRaksha. Learn how we protect children's data, comply with DPDPA 2023, and ensure safe digital experiences for families.",
+  title: "Privacy Policy – Child Data Protection",
+  description:
+    "How SlateMate eRaksha protects children's data: DPDP Act 2023 compliance, parental consent, no ads, no data selling and encrypted, privacy-first design.",
   keywords: "SlateMate privacy policy, eRaksha data protection, child privacy, DPDPA compliance, digital safety privacy, parental consent",
   openGraph: {
     title: "Privacy Policy | SlateMate eRaksha",
     description: "Learn how SlateMate protects your family's privacy and handles data securely.",
     type: "website",
-    url: "https://slatemate.in/privacy",
+    url: "https://www.slatemate.in/privacy",
     images: [
       {
         url: "/og-image.jpg",
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://slatemate.in/privacy",
+    canonical: "/privacy",
   },
 }
 
@@ -42,14 +44,14 @@ export default function PrivacyPolicy() {
       "name": "SlateMate",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://slatemate.in/logo.png"
+        "url": "https://www.slatemate.in/logo.png"
       }
     },
     "mainEntity": {
       "@type": "Article",
       "headline": "Privacy Policy",
       "datePublished": "2024-10-01",
-      "dateModified": "2025-10-01",
+      "dateModified": "2026-09-24",
       "author": {
         "@type": "Organization",
         "name": "SlateMate"
@@ -59,6 +61,7 @@ export default function PrivacyPolicy() {
 
   return (
     <>
+      <Breadcrumbs items={[{ name: "Privacy Policy", path: "/privacy" }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -80,7 +83,7 @@ export default function PrivacyPolicy() {
                   For SlateMate / eRaksha
                 </p>
                 <p className="text-sm text-foreground/60">
-                  Last updated: October 2025
+                  Last updated: September 2026
                 </p>
               </ScrollReveal>
             </div>
@@ -157,7 +160,7 @@ export default function PrivacyPolicy() {
                     
                     <div>
                       <h3 className="font-semibold text-foreground mb-2">Payment & Subscription Data</h3>
-                      <p className="text-foreground/70">For parents subscribing to premium features (₹299/month via Google Play billing), we record subscription status, transaction identifiers — we do not store sensitive payment card details ourselves.</p>
+                      <p className="text-foreground/70">For parents subscribing to premium features (₹349/month per child via Google Play billing), we record subscription status, transaction identifiers — we do not store sensitive payment card details ourselves.</p>
                     </div>
                     
                     <div>

@@ -1,38 +1,24 @@
-"use client"
-
-import { useRef, useEffect, type ReactNode } from "react"
-import { motion, useInView, useAnimation } from "framer-motion"
+import type { ReactNode } from "react"
 
 interface ScrollRevealProps {
   children: ReactNode
   width?: "full" | "auto"
   delay?: number
+  className?: string
 }
 
-export function ScrollReveal({ children, width = "full", delay = 0 }: ScrollRevealProps) {
-  const controls = useAnimation()
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.3 })
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible")
-    }
-  }, [controls, inView])
-
+/**
+ * CSS-only reveal animation.
+ *
+ * Content is fully visible in the server-rendered HTML (good for LCP, SEO and AI crawlers)
+ * and never depends on JavaScript. A short fade-up plays via CSS `animation-timeline: view()`
+ * in supporting browsers, and is disabled for users who prefer reduced motion.
+ */
+export function ScrollReveal({ children, width = "full", delay = 0, className }: ScrollRevealProps) {
+  const classes = ["scroll-reveal", width === "full" ? "w-full" : "", className].filter(Boolean).join(" ")
   return (
-    <motion.div
-      ref={ref}
-      variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0 },
-      }}
-      initial="hidden"
-      animate={controls}
-      transition={{ duration: 0.5, delay: delay, ease: "easeOut" }}
-      className={width === "full" ? "w-full" : ""}
-    >
+    <div className={classes} style={delay ? { animationDelay: `${Math.min(delay, 0.3)}s` } : undefined}>
       {children}
-    </motion.div>
+    </div>
   )
 }

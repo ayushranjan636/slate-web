@@ -1,0 +1,37 @@
+# SlateMate eRaksha
+
+> eRaksha is an AI-powered child digital safety platform built by SlateMate Private Limited, an IIT Madras Incubation Cell (IITMIC) incubated, DPIIT-recognised startup headquartered at IIT Madras Research Park, Chennai, India.
+
+## Key facts
+- Product: eRaksha — DNS protection layer + AI child companion + parent dashboard
+- Company: SLATEMATE PRIVATE LIMITED, founded 2023, Chennai, Tamil Nadu, India
+- Official launch: 14 November 2026
+- Pricing: Free plan (free forever) and Premium plan at ₹349 per month per child
+- Privacy: no ads, no data selling; designed for India's DPDP Act 2023
+- Audience: parents of children aged 10–16, schools and NGOs in India
+- Contact: info@slatemate.in, +91 90258 67204 (WhatsApp available)
+- Registration: CIN U62090TN2026PTC191373 · DPIIT Recognised Startup DIPP261360
+- Platform: Android 10+ (iOS and web planned)
+
+## Founders
+- Ayush Ranjan — Founder & CEO (IIT Madras Nirmaan fellow)
+- Prabhat Ranjan — CTO
+- Drushti Surkar — CPO
+
+## Original research
+- [eRaksha Parent Survey 2025](https://www.slatemate.in/research/parent-survey-2025): 84% of Indian parents feel helpless managing their child's digital life
+
+## Comparisons
+- [eRaksha vs Google Family Link](https://www.slatemate.in/compare/eraksha-vs-google-family-link)
+
+## Main pages
+- [Home](https://www.slatemate.in/): Overview of eRaksha and the problem it solves
+- [Product](https://www.slatemate.in/product): How eRaksha works
+- [Features](https://www.slatemate.in/features): DNS protection, AI companion, dashboards
+- [Pricing](https://www.slatemate.in/pricing): Free and Premium (₹349/month per child)
+- [FAQ](https://www.slatemate.in/faq): Common questions from parents
+- [About](https://www.slatemate.in/about): Team, mission, IIT Madras incubation
+- [Resources](https://www.slatemate.in/resources): Digital safety frameworks (4 C's, 5 P's, 4 R's)
+- [Blog](https://www.slatemate.in/blog): Research and insights on child digital safety in India
+- [Privacy Policy](https://www.slatemate.in/privacy)
+- [Terms of Service](https://www.slatemate.in/terms)

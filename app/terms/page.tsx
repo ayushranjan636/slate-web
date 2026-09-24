@@ -1,16 +1,18 @@
 import { Metadata } from "next"
 import { ScrollReveal } from "@/components/animations/scroll-reveal"
 import { FileText, Shield, Users, CreditCard, Code, AlertCircle, RefreshCw, UserCheck, Link2, Scale, Ban, Mail } from "lucide-react"
+import { Breadcrumbs } from "@/components/seo/json-ld"
 
 export const metadata: Metadata = {
-  title: "Terms of Service | SlateMate eRaksha - Child Safety Platform Agreement",
-  description: "Terms of Service for SlateMate eRaksha. Understand your rights, responsibilities, and usage guidelines for our AI-powered child safety platform.",
+  title: "Terms of Service",
+  description:
+    "Terms of Service for SlateMate eRaksha: your rights, responsibilities, subscriptions (Free or ₹349/month per child) and usage guidelines for the platform.",
   keywords: "SlateMate terms, eRaksha terms of service, user agreement, child safety terms, service conditions, platform usage",
   openGraph: {
     title: "Terms of Service | SlateMate eRaksha",
     description: "Terms of Service for SlateMate eRaksha child safety platform.",
     type: "website",
-    url: "https://slatemate.in/terms",
+    url: "https://www.slatemate.in/terms",
     images: [
       {
         url: "/og-image.jpg",
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
     images: ["/og-image.jpg"],
   },
   alternates: {
-    canonical: "https://slatemate.in/terms",
+    canonical: "/terms",
   },
 }
 
@@ -42,14 +44,14 @@ export default function TermsOfService() {
       "name": "SlateMate",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://slatemate.in/logo.png"
+        "url": "https://www.slatemate.in/logo.png"
       }
     },
     "mainEntity": {
       "@type": "Article",
       "headline": "Terms of Service",
       "datePublished": "2024-10-01",
-      "dateModified": "2025-10-01",
+      "dateModified": "2026-09-24",
       "author": {
         "@type": "Organization",
         "name": "SlateMate"
@@ -59,6 +61,7 @@ export default function TermsOfService() {
 
   return (
     <>
+      <Breadcrumbs items={[{ name: "Terms of Service", path: "/terms" }]} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -80,7 +83,7 @@ export default function TermsOfService() {
                   SlateMate / eRaksha
                 </p>
                 <p className="text-sm text-foreground/60">
-                  Last updated: October 2025
+                  Last updated: September 2026
                 </p>
               </ScrollReveal>
             </div>
@@ -228,11 +231,11 @@ export default function TermsOfService() {
                   <ul className="space-y-3 text-foreground/70">
                     <li className="flex items-start">
                       <span className="text-orange mr-2 mt-1">•</span>
-                      <span>The core app functions are available free of charge ("<strong>Freemium Plan</strong>").</span>
+                      <span>The core app functions are available free of charge ("<strong>Free Plan</strong>").</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-orange mr-2 mt-1">•</span>
-                      <span>Advanced features, insights, and reports are available through a paid subscription ("<strong>Premium Plan</strong>") at <strong>₹299/month per child</strong>, billed securely via Google Play Billing.</span>
+                      <span>Advanced features, insights, and reports are available through a paid subscription ("<strong>Premium Plan</strong>") at <strong>₹349/month per child</strong>, billed securely via Google Play Billing.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-orange mr-2 mt-1">•</span>

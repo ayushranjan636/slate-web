@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import FeaturesPageContent from "./_components/FeaturesPageContent";
+import { Breadcrumbs } from "@/components/seo/json-ld"
 
 export const metadata: Metadata = {
-  title: "eRaksha Features | AI Child Safety Tools & Digital Guardian",
+  title: "eRaksha Features – AI Child Safety Tools",
   description:
-    "Explore eRaksha's child safety features: DNS protection, AI companion, parent dashboard, privacy-first design, and safe social learning for family digital wellness.",
+    "Explore eRaksha features: DNS protection, an AI companion for kids, a parent dashboard, privacy-first design and safe social learning for Indian families.",
   keywords: [
     "eRaksha features",
     "AI child companion",
@@ -41,11 +42,11 @@ export const metadata: Metadata = {
     description:
       "DNS protection, AI mentoring, habit building, and privacy-first digital safety for children and families.",
     images: ["https://www.slatemate.in/og-image.jpg"],
-    site: "@slatemate_in",
-    creator: "@slatemate_in",
+    site: "@slatemate_",
+    creator: "@slatemate_",
   },
   alternates: {
-    canonical: "https://www.slatemate.in/features",
+    canonical: "/features",
   },
   robots: {
     index: true,
@@ -55,8 +56,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
+    <>
+      <Breadcrumbs items={[{ name: "Features", path: "/features" }]} />
     <Suspense fallback={<div>Loading...</div>}>
       <FeaturesPageContent />
     </Suspense>
+    </>
   );
 }

@@ -71,10 +71,7 @@ export function Navbar() {
             {/* Logo */}
             <div className="flex items-center gap-2.5">
               <Link href="/" className="flex items-center" aria-label="SlateMate Home">
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.5 }}
+                <div
                   className="relative h-7 md:h-8 w-auto"
                 >
                   <Image
@@ -85,7 +82,7 @@ export function Navbar() {
                     className="h-7 md:h-8 w-auto object-contain"
                     priority
                   />
-                </motion.div>
+                </div>
               </Link>
             </div>
 

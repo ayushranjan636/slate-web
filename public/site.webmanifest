@@ -1,6 +1,7 @@
 {
-  "name": "SlateMate",
-  "short_name": "SlateMate",
+  "name": "SlateMate eRaksha",
+  "short_name": "eRaksha",
+  "description": "AI-powered child digital safety platform by SlateMate",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -9,12 +10,8 @@
     {
       "src": "/s_logo.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/s_logo.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "500x500",
+      "purpose": "any"
     }
   ]
 }

@@ -1,11 +1,13 @@
 import { Suspense } from "react"
 import type { Metadata } from "next"
 import AboutContent from "./_components/AboutPageContent"
+import { Breadcrumbs, JsonLd } from "@/components/seo/json-ld"
+import { ORG_ID, SITE_URL, founders, personSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: 'About SlateMate | IITMIC Incubated Child Safety Startup',
+  title: 'About Us – IITMIC Incubated Child Safety Startup',
   description:
-    'Learn about SlateMate – our mission to create safer internet experiences for children. We develop eRaksha, an AI-powered digital guardian. IITMIC incubated startup from IIT Madras.',
+    "Meet SlateMate, the IIT Madras-incubated team building eRaksha, an AI-powered digital guardian that keeps Indian children safe and happy online.",
   keywords: [
     'SlateMate about',
     'eRaksha',
@@ -37,11 +39,11 @@ export const metadata: Metadata = {
     title: 'About SlateMate | IITMIC Incubated Startup',
     description:
       'IITMIC incubated startup building eRaksha – AI-powered child safety platform from IIT Madras.',
-    site: '@slatemate_in',
+    site: '@slatemate_',
     images: ['https://www.slatemate.in/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://www.slatemate.in/about',
+    canonical: "/about",
   },
   robots: {
     index: true,
@@ -51,8 +53,26 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
+    <>
+      <Breadcrumbs items={[{ name: "About", path: "/about" }]} />
+      <JsonLd
+        data={{
+          "@graph": [
+            {
+              "@type": "AboutPage",
+              "@id": `${SITE_URL}/about#page`,
+              url: `${SITE_URL}/about`,
+              name: "About SlateMate",
+              about: { "@id": ORG_ID },
+              mainEntity: { "@id": ORG_ID },
+            },
+            ...founders.map(personSchema),
+          ],
+        }}
+      />
     <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
       <AboutContent />
     </Suspense>
+    </>
   )
 }

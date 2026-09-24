@@ -33,3 +33,6 @@ next-env.d.ts
 .tf*
 # Waitlist data
 waitlist-data.json
+
+# pnpm store
+.pnpm-store/
